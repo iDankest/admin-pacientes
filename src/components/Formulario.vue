@@ -1,0 +1,40 @@
+<script setup>
+</script>
+
+<template>
+        <div class="md:w-1/2">
+            <h2 class="font-black text-3xl text-center">Seguimiento de pacientes</h2>
+        
+            <p class="text-lg mt-5 text-center mb-10">
+                Añande pacientes y 
+                <span class="text-indigo-600 font-bold">Adminístralos</span>
+            </p>
+            <form class="shadow-md bg-white rounded-lg py-10 px-5 mb-10">
+                <div class="mb-5">
+                    <label for="nombre" class="block text-gray-700 uppercase font-bold">
+                        Nombre del paciente
+                    </label>
+                    <input type="text" id="nombre" placeholder="Nombre del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md">
+                </div>
+                <div class="mb-5">
+                    <label for="email" class="block text-gray-700 uppercase font-bold">
+                        Email
+                    </label>
+                    <input type="email" id="email" placeholder="Email del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md">
+                </div>
+                <div class="mb-5">
+                    <label for="alta" class="block text-gray-700 uppercase font-bold">
+                        Alta
+                    </label>
+                    <input type="date" id="alta" placeholder="Alta del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md">
+                </div>
+                <div class="mb-5">
+                    <label for="sintomas" class="block text-gray-700 uppercase font-bold">
+                        Sintomas
+                    </label>
+                    <textarea id="sintomas" placeholder="Sintomas del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md h-40"></textarea>
+                </div>
+                <input type="submit" value="Agregar paciente" class="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer text-white font-bold p-2 rounded-md">
+            </form>
+        </div>
+</template>
