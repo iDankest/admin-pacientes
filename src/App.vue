@@ -1,5 +1,9 @@
-<script setup></script>
+<script setup>
+  import Header from "./components/Header.vue";
+</script>
 
 <template>
-  <h1 class="text-6xl font-bold text-red-500">hola mundo</h1>
+  <div class="container mx-auto mt-20">
+    <Header />
+  </div>
 </template>
