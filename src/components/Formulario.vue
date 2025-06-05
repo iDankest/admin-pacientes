@@ -1,6 +1,11 @@
 <script setup>
-import { ref } from 'vue';
-const nombre = ref('');
+import { reactive } from 'vue';
+const paciente = reactive({
+    nombre: '',
+    email: '',
+    alta: '',
+    sintomas: '',
+})
 
 </script>
 
@@ -14,10 +19,11 @@ const nombre = ref('');
             </p>
             <form class="shadow-md bg-white rounded-lg py-10 px-5 mb-10">
                 <div class="mb-5">
+                    {{ paciente.nombre }}
                     <label for="nombre" class="block text-gray-700 uppercase font-bold">
                         Nombre del paciente
                     </label>
-                    <input type="text" v-model="nombre"  id="nombre" placeholder="Nombre del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md" >
+                    <input type="text" v-model="paciente.nombre"  id="nombre" placeholder="Nombre del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md" >
                 </div>
                 <div class="mb-5">
                     <label for="email" class="block text-gray-700 uppercase font-bold">
