@@ -1,4 +1,7 @@
 <script setup>
+import { ref } from 'vue';
+const nombre = ref('');
+
 </script>
 
 <template>
@@ -14,7 +17,7 @@
                     <label for="nombre" class="block text-gray-700 uppercase font-bold">
                         Nombre del paciente
                     </label>
-                    <input type="text" id="nombre" placeholder="Nombre del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md">
+                    <input type="text" v-model="nombre"  id="nombre" placeholder="Nombre del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md" >
                 </div>
                 <div class="mb-5">
                     <label for="email" class="block text-gray-700 uppercase font-bold">
@@ -30,9 +33,9 @@
                 </div>
                 <div class="mb-5">
                     <label for="sintomas" class="block text-gray-700 uppercase font-bold">
-                        Sintomas
+                        Síntomas
                     </label>
-                    <textarea id="sintomas" placeholder="Sintomas del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md h-40"></textarea>
+                    <textarea id="sintomas" placeholder="Síntomas del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md h-40"></textarea>
                 </div>
                 <input type="submit" value="Agregar paciente" class="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer text-white font-bold p-2 rounded-md">
             </form>
