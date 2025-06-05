@@ -1,5 +1,12 @@
 <script setup>
 import { reactive } from 'vue';
+import Alerta from './Alerta.vue';
+
+const alerta= reactive({
+    tipo: '',
+    mensaje: ''
+})
+
 const paciente = reactive({
     nombre: '',
     email: '',
@@ -8,12 +15,11 @@ const paciente = reactive({
 })
 
 const validando = e => {
-    if([paciente.nombre, paciente.email].includes('')){
-        document.getElementById('error').innerHTML = 'Todos los campos son obligatorios'
+    if(Object.values(paciente).includes('')){//Object.values() Devuelve los valores del objetos permitiendo que se mas facil escalar
+        alerta.mensaje='Toddos los campos son obligatorios'
+        alerta.tipo='error'
         return
     }
-    document.getElementById('error').innerHTML = ''
-    console.log(paciente)
 }
 
 </script>
@@ -25,6 +31,10 @@ const validando = e => {
                 Añande pacientes y 
                 <span class="text-indigo-600 font-bold">Adminístralos</span>
             </p>
+            <Alerta 
+            v-if="alerta.mensaje"
+            :alerta="alerta"
+            />
             <form class="shadow-md bg-white rounded-lg py-10 px-5 mb-10" @submit.prevent="validando">
                 <p id="error" class="text-red-500 mt-5"></p>
                 <div class="mb-5">
