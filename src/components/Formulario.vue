@@ -8,8 +8,12 @@ const paciente = reactive({
 })
 
 const validando = e => {
-    e.preventDefault();
-    console.log("...validando");
+    if([paciente.nombre, paciente.email].includes('')){
+        document.getElementById('error').innerHTML = 'Todos los campos son obligatorios'
+        return
+    }
+    document.getElementById('error').innerHTML = ''
+    console.log(paciente)
 }
 
 </script>
@@ -17,12 +21,12 @@ const validando = e => {
 <template>
         <div class="md:w-1/2">
             <h2 class="font-black text-3xl text-center">Seguimiento de pacientes</h2>
-        
             <p class="text-lg mt-5 text-center mb-10">
                 Añande pacientes y 
                 <span class="text-indigo-600 font-bold">Adminístralos</span>
             </p>
-            <form class="shadow-md bg-white rounded-lg py-10 px-5 mb-10" @submit="validando">
+            <form class="shadow-md bg-white rounded-lg py-10 px-5 mb-10" @submit.prevent="validando">
+                <p id="error" class="text-red-500 mt-5"></p>
                 <div class="mb-5">
                     {{ paciente.nombre }}
                     <label for="nombre" class="block text-gray-700 uppercase font-bold">
