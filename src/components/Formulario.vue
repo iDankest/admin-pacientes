@@ -7,7 +7,7 @@ const alerta= reactive({
     mensaje: ''
 })
 
-defineEmits(['update:nombre', 'update:email', 'update:alta', 'update:sintomas'])//Emits para pasar info al padre
+const emit = defineEmits(['update:nombre', 'update:email', 'update:alta', 'update:sintomas', 'agregar-paciente'])//Emits para pasar info al padre
 
 const props = defineProps({ //Props para recibir info del padre mostrar la info en el Dom
     nombre:{
@@ -29,11 +29,12 @@ const props = defineProps({ //Props para recibir info del padre mostrar la info 
 })
 
 const validando = e => {
-    if(Object.values(paciente).includes('')){//Object.values() Devuelve los valores del objetos permitiendo que se mas facil escalar
+    if(Object.values(props).includes('')){//Object.values() Devuelve los valores del objetos permitiendo que se mas facil escalar
         alerta.mensaje='Toddos los campos son obligatorios'
         alerta.tipo='error'
         return
     }
+    emit('agregar-paciente')
 }
 
 </script>
@@ -55,25 +56,25 @@ const validando = e => {
                     <label for="nombre" class="block text-gray-700 uppercase font-bold">
                         Nombre del paciente
                     </label>
-                    <input type="text" @input="$emit('update:nombre', $event.target.value)" id="nombre" placeholder="Nombre del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md" >
+                    <input type="text" :value="nombre" @input="$emit('update:nombre', $event.target.value)" id="nombre" placeholder="Nombre del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md" >
                 </div>
                 <div class="mb-5">
                     <label for="email" class="block text-gray-700 uppercase font-bold">
                         Email
                     </label>
-                    <input type="email" @input="$emit('update:email', $event.target.value)" id="email" placeholder="Email del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md">
+                    <input type="email" :value="email" @input="$emit('update:email', $event.target.value)" id="email" placeholder="Email del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md">
                 </div>
                 <div class="mb-5">
                     <label for="alta" class="block text-gray-700 uppercase font-bold">
                         Alta
                     </label>
-                    <input type="date" @input="$emit('update:alta', $event.target.value)" id="alta" placeholder="Alta del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md">
+                    <input type="date" :value="alta" @input="$emit('update:alta', $event.target.value)" id="alta" placeholder="Alta del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md">
                 </div>
                 <div class="mb-5">
                     <label for="sintomas" class="block text-gray-700 uppercase font-bold">
                         Síntomas
                     </label>
-                    <textarea @input="$emit('update:sintomas', $event.target.value)" id="sintomas" placeholder="Síntomas del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md h-40"></textarea>
+                    <textarea :value="sintomas" @input="$emit('update:sintomas', $event.target.value)" id="sintomas" placeholder="Síntomas del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md h-40"></textarea>
                 </div>
                 <input type="submit" value="Agregar paciente" class="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer text-white font-bold p-2 rounded-md">
             </form>
