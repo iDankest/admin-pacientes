@@ -1,5 +1,5 @@
 <script setup>
-import { reactive } from 'vue';
+import { reactive, computed } from 'vue';
 import Alerta from './Alerta.vue';
 
 const alerta= reactive({
@@ -10,6 +10,10 @@ const alerta= reactive({
 const emit = defineEmits(['update:nombre', 'update:email', 'update:alta', 'update:sintomas', 'agregar-paciente'])//Emits para pasar info al padre
 
 const props = defineProps({ //Props para recibir info del padre mostrar la info en el Dom
+    id:{
+        type: [String, null],
+        required: true
+    },
     nombre:{
         type: String,
         required: true
@@ -43,6 +47,9 @@ const validando = e => {
     }, 3000)
 }
 
+const editando = computed(() => {
+    return props.id //Esto nos retorna true o false
+})
 </script>
 
 <template>
@@ -82,7 +89,7 @@ const validando = e => {
                     </label>
                     <textarea :value="sintomas" @input="$emit('update:sintomas', $event.target.value)" id="sintomas" placeholder="Síntomas del paciente" class="border-2 placeholder-gray-400 w-full p-2 mt-2 rounded-md h-40"></textarea>
                 </div>
-                <input type="submit" value="Agregar paciente" class="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer text-white font-bold p-2 rounded-md">
+                <input type="submit" :value="[editando ? 'guardar cambios' : 'agregar paciente']" class="w-full bg-indigo-600 hover:bg-indigo-700 transition-colors cursor-pointer text-white font-bold p-2 rounded-md">
             </form>
         </div>
 </template>
