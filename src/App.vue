@@ -14,7 +14,22 @@ const paciente = reactive({
 })
 
 const agregarPaciente = () => {
-  pacientes.value.push(paciente)
+  pacientes.value.push({...paciente})
+
+  //Reiniciar objeto
+
+  // paciente.nombre = '' Es lo mismo de abajo
+  // paciente.email = ''
+  // paciente.alta = ''
+  // paciente.sintomas = ''
+
+  //Otra forma de reiniciar el objeto
+  Object.assign(paciente, {
+    nombre: '',
+    email: '',
+    alta: '',
+    sintomas: '',
+  })
 }
 
 </script>
