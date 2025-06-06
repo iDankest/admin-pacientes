@@ -35,6 +35,12 @@ const validando = e => {
         return
     }
     emit('agregar-paciente')
+    alerta.mensaje='Paciente agregado correctamente'
+    alerta.tipo='exito'
+    setTimeout(() => {
+        alerta.mensaje=''
+        alerta.tipo=''
+    }, 3000)
 }
 
 </script>
